@@ -22,43 +22,79 @@ import java.util.Map;
         public String EmployeeServiceImpl() {
             this.employees = new HashMap<>();
 
-            @Override
-            public void addEmployee ((String firstName, String lastName)){
-                Employee employee = new Employee(firstName, lastName);
+//            @Override
+//            public void addEmployee (String firstName, String lastName){
+//                Employee employee = new Employee(firstName, lastName);
+////
+////                if (MAX_NUMBER_OF_EMPLOYEE == employees.size()) {
+////                    throw new EmployeeStoragelsFullException();
+////                }
+////
+////                if (employees.containsKey(employee.getFullName())) {
+////                    throw new EmployeeAlreadyAddedException();
+////                }
+////                employees.put(employee.getFullName(), employee);
+//            }
+//
+//            @Override
+//            public void removeEmployee (String firstName, String lastName){
+//                Employee employee = new Employee(firstName, lastName);
+////                if (!employees.containsKey(employee.getFullName())) {
+////                    throw new EmployeeNotFoundException();
+////                }
+////                employees.remove(employee.getFullName());
+//            }
+//
+//            @Override
+//            public void findEmployee (String firstName, String lastName){
+//                Employee employee = new Employee(firstName, lastName);
+//
+////                if (!employees.containsKey(employee.getFullName())) {
+////                    throw new EmployeeNotFoundException();
+////                }
+////                employees.get(employee.getFullName());
+//            }
+//            @Override
+//            public String outputEmployee () {
+////                return employees.toString();
+//            }
 
-                if (MAX_NUMBER_OF_EMPLOYEE == employees.size()) {
-                    throw new EmployeeStoragelsFullException();
-                }
 
-                if (employees.containsKey(employee.getFullName())) {
-                    throw new EmployeeAlreadyAddedException();
-                }
-                employees.put(employee.getFullName(), employee);
-            }
+    @Override
+    public void addEmployee(Employee employee) {
 
-            @Override
-            public void removeEmployee (String firstName, String lastName){
-                Employee employee = new Employee(firstName, lastName);
-                if (!employees.containsKey(employee.getFullName())) {
-                    throw new EmployeeNotFoundException();
-                }
-                employees.remove(employee.getFullName());
-            }
-
-            @Override
-            public void findEmployee (String firstName, String lastName){
-                Employee employee = new Employee(firstName, lastName);
-
-                if (!employees.containsKey(employee.getFullName())) {
-                    throw new EmployeeNotFoundException();
-                }
-                employees.get(employee.getFullName());
-            }
-            @Override
-            public String outputEmployee () {
-                return employees.toString();
-            }
+        if (MAX_NUMBER_OF_EMPLOYEE == employees.size()) {
+            throw new EmployeeStoragelsFullException();
         }
+
+        if (employees.containsKey(employee.getFullName())) {
+            throw new EmployeeAlreadyAddedException();
+        }
+        employees.put(employee.getFullName(), employee);
+
+    }
+
+    @Override
+    public void removeEmployee(Employee employee) {
+        if (!employees.containsKey(employee.getFullName())) {
+            throw new EmployeeNotFoundException();
+        }
+        employees.remove(employee.getFullName());
+    }
+
+    @Override
+    public void findEmployee(Employee employee) {
+        if (!employees.containsKey(employee.getFullName())) {
+            throw new EmployeeNotFoundException();
+        }
+        employees.get(employee.getFullName());
+    }
+
+    @Override
+    public String outputEmployee() {
+        return  employees.toString();
+    }
+}
 
     @Override
     public void addEmployee(Employee employee) {
@@ -79,5 +115,4 @@ import java.util.Map;
     public String outputEmployee() {
         return null;
     }
-}
 }
